@@ -593,7 +593,9 @@ tbody tr:hover {
     }
 
     .sidebar {
-        display: none;
+        display: block;
+        width: 200px;
+        left: 0;
     }
 
     .navbar-scroller {
@@ -605,6 +607,10 @@ tbody tr:hover {
         margin-left: 0;
         margin-top: 90px;
         padding: 12px;
+    }
+
+    .sidebar.sidebar-hidden {
+        left: -260px;
     }
 
     .dashboard-panel {
