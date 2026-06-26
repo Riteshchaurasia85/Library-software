@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const calculationController =
-require('../controllers/calculationController');
+require('../Controllers/calculationController');
 
 // HOME
 router.get('/', (req, res) => {
