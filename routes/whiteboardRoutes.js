@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const whiteboardController = require("../controllers/whiteboardController");
+const whiteboardController = require("../Controllers/whiteboardController");
 
 router.post(
     "/whiteboard/save",

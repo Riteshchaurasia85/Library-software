@@ -5,7 +5,7 @@ const router =
 express.Router();
 
 const libraryController =
-require('../controllers/libraryController');
+require('../Controllers/libraryController');
 
 // SHOW LIBRARY
 router.get(
