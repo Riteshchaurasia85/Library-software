@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday</title>
+    <link rel="stylesheet" href="/css/birthday.css">
+</head>
+<body>
+     <div class="birthday-container">
+    <div class="birthday-header">
+        <h1>🎂 Birthdays</h1>
+        <a href="/dashboard" class="btn-close">Close</a>
+    </div>
+
+    <% if (birthdayStudents && birthdayStudents.length > 0) { %>
+        <div class="birthdays-list">
+            <% birthdayStudents.forEach((student, index) => { %>
+                <div class="birthday-card">
+                    <div class="avatar-circle">
+                        <span class="avatar-icon">👤</span>
+                    </div>
+                    <div class="student-info">
+                        <div class="name-button-container">
+                            <h2 class="student-name"><%= student.fullName %></h2>
+                            <a href="https://www.ridtech.in/rts/birthday-software" class="btn-send-wishes">Send Wishes</a>
+                        </div>
+                        <p class="student-course">
+                            <% 
+                                let courseText = "Student";
+                                if (student.shift) {
+                                    courseText = student.shift + " Shift";
+                                }
+                                if (student.paymentStatus === 'Paid') {
+                                    courseText = "Member - " + courseText;
+                                } else {
+                                    courseText = "Student - " + courseText;
+                                }
+                            %>
+                            <%= courseText %>
+                        </p>
+                        <!-- <p class="student-date">
+                            <%
+                                const dob = new Date(student.dateOfBirth);
+                                const monthNames = ["January", "February", "March", "April", "May", "June",
+                                    "July", "August", "September", "October", "November", "December"
+                                ];
+                                const month = monthNames[dob.getMonth()];
+                                const date = dob.getDate();
+                            %>
+                            <!-- <%= month %> <%= date %> 
+                        </p> -->
+                    </div>
+                </div>
+                <% if (index < birthdayStudents.length - 1) { %>
+                    <!-- <div class="divider"></div> -->
+                <% } %>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <div class="no-birthdays">
+            <p class="empty-icon">🎂</p>
+            <h2>No Birthdays Today</h2>
+            <p>No students have birthdays today. Check back soon!</p>
+        </div>
+    <% } %>
+</div>
+
+ <script src="public/js/birthday.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

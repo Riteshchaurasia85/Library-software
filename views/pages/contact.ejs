@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <link rel="stylesheet" href="/css/contact.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <!-- Heading -->
+    <div class="heading">
+
+        <h1>Get In Touch</h1>
+
+        <div class="line"></div>
+
+        <p>
+         Let’s Build Something Amazing Together
+        </p>
+
+    </div>
+
+    <!-- Swiper Video Slider -->
+    <div class="swiper mySwiper">
+
+        <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+
+                <video autoplay muted loop playsinline>
+
+                    <source
+                    src="/assets/video01.mp4"
+                    type="video/mp4">
+
+                </video>
+
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+
+                <video autoplay muted loop playsinline>
+
+                    <source
+                    src="/assets/video01.mp4"
+                    type="video/mp4">
+
+                </video>
+
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+
+                <video autoplay muted loop playsinline>
+
+                    <source
+                    src="/assets/video01.mp4"
+                    type="video/mp4">
+
+                </video>
+
+            </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+
+    </div>
+
+    <!-- Main Wrapper -->
+    <div class="wrapper">
+
+        <!-- Contact Form -->
+        <div class="card">
+
+            <form action="/send" method="POST">
+
+                <input
+                type="text"
+                name="name"
+                placeholder="Enter Name"
+                required>
+
+                <input
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                required>
+
+                <input
+                type="text"
+                name="subject"
+                placeholder="Enter Subject"
+                required>
+
+                <textarea
+                name="message"
+                placeholder="Enter Message"
+                required></textarea>
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Contact Info -->
+        <div class="card">
+
+            <h2>Contact Information</h2>
+
+            <br>
+
+            <!-- Phone -->
+            <div class="info-box">
+
+                <div class="icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+
+                <div>
+                    <h3>Phone</h3>
+                    <p>+91 9202707903</p>
+                </div>
+
+            </div>
+
+            <!-- Email -->
+            <div class="info-box">
+
+                <div class="icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+
+                <div>
+                    <h3>Email</h3>
+                    <p>ridtech@gmail.com</p>
+                </div>
+
+            </div>
+
+            <!-- Address -->
+            <div class="info-box">
+
+                <div class="icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div>
+                    <h3>Address</h3>
+                    <p>Bhopal, Madhya Pradesh</p>
+                </div>
+
+            </div>
+
+            <!-- Social -->
+            <div class="social">
+
+                <a href="https://www.linkedin.com/company/rid-tech3">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+
+                <a href="https://github.com/RID-bharat25">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+                <a href="https://www.instagram.com/rid_tech_pvt_ltd/">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/js/contact.js"></script>
+
+</body>
+</html>

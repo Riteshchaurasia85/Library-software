@@ -1,0 +1,213 @@
+    /* Fonts & Reset Setup */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap');
+
+
+
+/* body {
+    background-color: #e3effd;  
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+} */
+
+/* ==========================================================================
+   1. DESKTOP & LARGE LAPTOPS (Base Styles)
+   ========================================================================== */
+.student-list-panel {
+    background-color: #e3effd;
+    width: 100%;
+    max-width: 1100px; /* Table layout ke liye clear width */
+    padding: 20px;
+    border-radius: 24px;
+}
+.main-content{
+    margin-top:120px;
+    margin-right: 30px;
+}
+
+/* Header Section */
+.table-top {
+    margin-bottom: 15px;
+}
+
+.table-top > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #7a8b9e; 
+    padding-bottom: 5px;
+    padding-right: 10px;
+}
+
+.table-top h1 {
+    font-family: 'Playfair Display', serif;
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Cancel Button */
+.btn-cancel {
+    background-color: #f17373; /* Image jaisa exact coral pink color */
+    color: white;
+    text-decoration: none;
+    padding: 8px 35px;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: background 0.3s ease;
+    display: inline-block;
+}
+
+.btn-cancel:hover {
+    background-color: #e05c5c;
+}
+
+/* White Container Wrapper for Table (As shown in Image) */
+.table-wrapper {
+    background-color: #ffffff;
+    border-radius: 24px; /* Highly curved outer box corners */
+    padding: 22px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    overflow-x: auto; /* X-axis scrollbar badal jayega jab responsive hoga */
+}
+
+/* Table Core Styling */
+.student-table {
+    width: 100%;
+    border-collapse: collapse; /* Double borders hatane ke liye */
+    text-align: center;
+}
+
+/* Border Structure (Image ke exact dark grid system jaisa) */
+.student-table th, 
+.student-table td {
+    border: 1px solid #333333; /* Dark clean lines */
+    padding: 8px 9px;
+    font-size: 15px;
+    color: #444444;
+}
+
+/* Table Header Styles */
+.student-table th {
+    font-weight: 500;
+    color: #7a8b9e; /* Muted gray text color for headings */
+    background-color: #ffffff;
+}
+
+/* Specific styling for data items to match image weights */
+.student-table tbody td {
+    font-weight: 500;
+}
+
+/* Bold entries as seen in Image row 1 */
+.student-table tbody tr td:nth-child(2), /* Name */
+.student-table tbody tr td:nth-child(4), /* Seat */
+.student-table tbody tr td:nth-child(5), /* Shift */
+.student-table tbody tr td:nth-child(7)  /* Expire/Joining Date */ {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Custom Delete Action Button */
+.btn-delete {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #e03333;
+}
+
+/* Empty Notice State */
+.form-notice {
+    background-color: #fffafb;
+    border: 1px dashed #7a8b9e;
+    padding: 30px;
+    text-align: center;
+    border-radius: 20px;
+    color: #7a8b9e;
+    font-size: 18px;
+}
+
+
+/* ==========================================================================
+   2. TABLETS & SMALL LAPTOPS (Screen size 1024px se choti)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .student-list-panel {
+        max-width: 90%;
+    }
+    .table-wrapper {
+        padding: 20px;
+    }
+    .student-table th, 
+    .student-table td {
+        padding: 12px 10px;
+        font-size: 15px;
+    }
+}
+
+
+/* ==========================================================================
+   3. SMALL TABLETS (Screen size 768px se choti)
+   ========================================================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+    .table-top h1 {
+        font-size: 28px;
+    }
+    .btn-cancel {
+        padding: 6px 25px;
+        font-size: 16px;
+    }
+    .table-wrapper {
+        border-radius: 16px;
+        padding: 15px;
+    }
+    /* Yahan overflow system kaam karega jo responsive table ko build karta hai */
+    .student-table {
+        min-width: 650px; /* layout preserve rakhega tablet par */
+    }
+}
+
+
+/* ==========================================================================
+   4. MOBILE PHONES (Screen size 480px se choti)
+   ========================================================================== */
+@media (max-width: 480px) {
+    .table-top > div {
+        padding-bottom: 10px;
+    }
+    .table-top h1 {
+        font-size: 22px;
+    }
+    .btn-cancel {
+        padding: 4px 18px;
+        font-size: 14px;
+    }
+    .table-wrapper {
+        border-radius: 12px;
+        padding: 10px;
+    }
+    .student-table {
+        min-width: 600px; /* Choti screens par grid layout maintain rakhne ke liye horizontal swipe enable karega */
+    }
+    .student-table th, 
+    .student-table td {
+        padding: 10px 6px;
+        font-size: 13px;
+    }
+}

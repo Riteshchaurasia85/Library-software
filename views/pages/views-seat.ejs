@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>views-seat</title>
+    <link rel="stylesheet" href="/css/views-seat.css">
+</head>
+<body>
+    <div class="seat-page-panel">
+    <!-- Header Section -->
+    <div class="seat-view-header">
+        <div>
+            <h1>Seat Management</h1>
+            <!-- <p>Real-time seat allocation & monitoring</p> -->
+        </div>
+        <div class="seat-view-actions">
+            <div class="seat-view-date">
+                <i class="ri-calendar-line"></i> 
+                <span><%= currentDate %></span>
+            </div>
+            <button class="btn-refresh" onclick="updateSeatData()">
+                <i class="ri-refresh-line"></i> 
+                Refresh
+            </button>
+        </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="seat-summary-grid">
+        <div class="seat-summary-card">
+            <div class="summary-card-content">
+                <h2>Total Seats</h2>
+                <p><%= totalSeats %></p>
+            </div>
+            <div class="summary-icon summary-icon-blue">
+                <i class="ri-armchair-line"></i>
+            </div>
+        </div>
+        <div class="seat-summary-card">
+            <div class="summary-card-content">
+                <h2>Occupied</h2>
+                <p><%= occupiedCount %></p>
+            </div>
+            <div class="summary-icon summary-icon-green">
+                <i class="ri-armchair-line"></i>
+            </div>
+        </div>
+        <div class="seat-summary-card">
+            <div class="summary-card-content">
+                <h2>Available</h2>
+                <p><%= availableCount %></p>
+            </div>
+            <div class="summary-icon summary-icon-yellow">
+                <i class="ri-armchair-line"></i>
+            </div>
+        </div>
+        <div class="seat-summary-card">
+            <div class="summary-card-content">
+                <h2>Reserved</h2>
+                <p><%= reservedCount %></p>
+            </div>
+            <div class="summary-icon summary-icon-purple">
+                <i class="ri-armchair-line"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="seat-filter-row">
+        <form action="/page/views-seat" method="GET" class="seat-filter-form">
+            <div class="filter-group">
+                <label for="floorSelect">Floor / Room</label>
+                <select id="floorSelect" name="floor">
+                    <option value="Main Floor" <%= selectedFloor === 'Main Floor' ? 'selected' : '' %>>Main Floor</option>
+                    <option value="First Floor" <%= selectedFloor === 'First Floor' ? 'selected' : '' %>>First Floor</option>
+                    <option value="Second Floor" <%= selectedFloor === 'Second Floor' ? 'selected' : '' %>>Second Floor</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="shiftSelect">Shift</label>
+                <select id="shiftSelect" name="shift">
+                    <option value="All Shift" <%= selectedShift === 'All Shift' ? 'selected' : '' %>>All Shift</option>
+                    <option value="Morning" <%= selectedShift === 'Morning' ? 'selected' : '' %>>Morning</option>
+                    <option value="Evening" <%= selectedShift === 'Evening' ? 'selected' : '' %>>Evening</option>
+                    <option value="Night" <%= selectedShift === 'Night' ? 'selected' : '' %>>Night</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="totalSeatsInput">Total Seats</label>
+                <input id="totalSeatsInput" name="totalSeats" type="number" min="1" value="<%= selectedTotalSeats %>" />
+            </div>
+            <button type="submit" class="btn-add">Apply Filter</button>
+        </form>
+    </div>
+
+    <!-- Seat Board -->
+    <div class="seat-board-panel">
+        <div class="seat-board-layout">
+            <!-- Left: Seat Grid -->
+            <div class="seat-board-grid">
+                <div class="header-row">
+                    <div class="seat-grid-cell"></div>
+                    <% for (let col = 1; col <= columns; col++) { %>
+                        <div class="seat-grid-cell header-cell"><%= col %></div>
+                    <% } %>
+                </div>
+                <% seatRows.forEach(function(row) { %>
+                    <div class="seat-grid-row">
+                        <div class="seat-grid-cell row-label"><%= row.letter %></div>
+                        <% row.seats.forEach(function(seat) { %>
+                            <div class="seat-box <%= seat.colorClass %>" title="<%= seat.status %>">
+                                <span class="seat-label"><%= seat.label %></span>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!-- Right: Sidebar with Chart & Legend -->
+            <div class="seat-board-sidebar">
+                <div class="legend-card">
+                    <h3>Seat Distribution</h3>
+                    <div class="chart-container">
+                        <canvas id="seatChart"></canvas>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot occupied"></span>
+                            <span class="legend-label">Occupied (<span id="occupiedLabel"><%= occupiedCount %></span>)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot available"></span>
+                            <span class="legend-label">Available (<span id="availableLabel"><%= availableCount %></span>)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot reserved"></span>
+                            <span class="legend-label">Reserved (<span id="reservedLabel"><%= reservedCount %></span>)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot unreversed"></span>
+                            <span class="legend-label">Unreversed (<span id="unreversedLabel"><%= unreversedCount %></span>)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="/js/views-seat.js"></script>
+</body>
+</html>

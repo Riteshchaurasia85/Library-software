@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="/css/calculator.css">
+    <link href="/style.css">
+</head>
+<body>
+    <div class="main-container">
+
+    <div class="calculator-card">
+
+        <div class="top">
+
+            <h1>🧮 Calculator</h1>
+            <a href="/dashboard" class="btn btn-cancel">Cancel</a>
+
+        </div>
+
+        <div class="content">
+
+            <div class="left">
+
+                <div id="display">0 ₹</div>
+
+                <div class="buttons">
+
+                    <button onclick="appendNum('7')">7</button>
+                    <button onclick="appendNum('8')">8</button>
+                    <button onclick="appendNum('9')">9</button>
+                    <button onclick="setOp('/')">÷</button>
+
+                    <button onclick="appendNum('4')">4</button>
+                    <button onclick="appendNum('5')">5</button>
+                    <button onclick="appendNum('6')">6</button>
+                    <button onclick="setOp('*')">×</button>
+
+                    <button onclick="appendNum('1')">1</button>
+                    <button onclick="appendNum('2')">2</button>
+                    <button onclick="appendNum('3')">3</button>
+                    <button onclick="setOp('-')">-</button>
+
+                    <button onclick="appendNum('0')">0</button>
+                    <button onclick="appendNum('.')">.</button>
+
+                    <!-- BACKSPACE -->
+                    <!-- <button onclick="backspace()">⌫</button> -->
+
+                    <button onclick="setOp('+')">+</button>
+
+                    <button onclick="calculate()">=</button>
+
+                    <button class="clear" onclick="clearCalc()">C</button>
+
+                </div>
+
+            </div>
+
+            <div class="right">
+
+                <!-- LATE FEE -->
+                <a href="/latefee">
+                    <button>
+                       🕘 Late Fee (₹5/day)
+                    </button>
+                </a>
+
+                <!-- PRINT COST -->
+                <a href="/printcost">
+                    <button>
+                       🖨️ Print Cost (₹2/page)
+                    </button>
+                </a>
+
+                <!-- MEMBERSHIP -->
+                <a href="/membership">
+                    <button>
+                        🎫 20% Membership Discount
+                    </button>
+                </a>
+
+                <!-- PENALTY -->
+                <a href="/penalty">
+                    <button>
+                        📚 Lost Book Penalty
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="/js/calculator.js"></script>
+</html>
+
+
+
+<script>
+
+</script>

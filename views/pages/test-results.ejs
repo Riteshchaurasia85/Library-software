@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test-result</title>
+    <link rel="stylesheet" href="/css/test-results.css">
+</head>
+<body>
+      <div class="test-results-container">
+    <div class="results-header">
+        <h1>Test Results</h1>
+        <div class="result-status <%= response.isPassed ? 'passed' : 'failed' %>">
+            <%= response.isPassed ? '✓ PASSED' : '✗ FAILED' %>
+        </div>
+    </div>
+
+    <!-- Score Section -->
+    <div class="score-section">
+        <div class="score-card">
+            <div class="score-circle">
+                <svg viewBox="0 0 36 36">
+                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="#e0e0e0" stroke-width="3" stroke-dasharray="100"></circle>
+                    <circle cx="18" cy="18" r="15.915" fill="none" stroke="<%= response.percentage >= 50 ? '#10b981' : '#ef4444' %>" stroke-width="3" stroke-dasharray="<%= response.percentage %> 100" stroke-linecap="round" transform="rotate(-90 18 18)"></circle>
+                </svg>
+                <div class="score-text">
+                    <span class="percentage"><%= response.percentage %>%</span>
+                    <span class="marks"><%= response.obtainedMarks %>/<%= response.totalMarks %></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="ri-checkbox-circle-line"></i>
+                </div>
+                <div class="stat-content">
+                    <span class="stat-label">Passing %</span>
+                    <span class="stat-value"><%= response.test.passingPercentage %>%</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="ri-question-line"></i>
+                </div>
+                <div class="stat-content">
+                    <span class="stat-label">Total Questions</span>
+                    <span class="stat-value"><%= questions.length %></span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="ri-time-line"></i>
+                </div>
+                <div class="stat-content">
+                    <span class="stat-label">Duration</span>
+                    <span class="stat-value"><%= response.test.duration %> min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Info -->
+    <div class="student-info-section">
+        <h3>Candidate Information</h3>
+        <div class="info-grid">
+            <div class="info-item">
+                <label>Name:</label>
+                <value><%= response.studentName %></value>
+            </div>
+            <div class="info-item">
+                <label>Email:</label>
+                <value><%= response.studentEmail %></value>
+            </div>
+            <div class="info-item">
+                <label>Phone:</label>
+                <value><%= response.studentPhone %></value>
+            </div>
+            <div class="info-item">
+                <label>Submitted At:</label>
+                <value><%= new Date(response.submittedAt).toLocaleString() %></value>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Results -->
+    <div class="detailed-results-section">
+        <h3>Detailed Results</h3>
+        <div class="results-tabs">
+            <button class="tab-btn active" onclick="switchResultsTab('all')">All Questions (<%= questions.length %>)</button>
+            <% 
+                let correct = 0, incorrect = 0, unanswered = 0;
+                response.answers.forEach(ans => {
+                    if (ans.isCorrect === true) correct++;
+                    else if (ans.isCorrect === false) incorrect++;
+                    else unanswered++;
+                });
+            %>
+            <button class="tab-btn" onclick="switchResultsTab('correct')">Correct (<%= correct %>)</button>
+            <button class="tab-btn" onclick="switchResultsTab('incorrect')">Incorrect (<%= incorrect %>)</button>
+            <button class="tab-btn" onclick="switchResultsTab('unanswered')">Unanswered (<%= unanswered %>)</button>
+        </div>
+
+        <div class="questions-results">
+            <% response.answers.forEach((answer, index) => {
+                const question = questions.find(q => q._id.toString() === answer.questionId);
+                let status = '';
+                if (answer.isCorrect === true) status = 'correct';
+                else if (answer.isCorrect === false) status = 'incorrect';
+                else status = 'unanswered';
+            %>
+                <div class="question-result <%= status %>" data-status="<%= status %>">
+                    <div class="result-header">
+                        <span class="question-number">Q<%= index + 1 %></span>
+                        <span class="status-badge">
+                            <% if (status === 'correct') { %>
+                                <i class="ri-check-circle-line"></i> Correct
+                            <% } else if (status === 'incorrect') { %>
+                                <i class="ri-close-circle-line"></i> Incorrect
+                            <% } else { %>
+                                <i class="ri-question-line"></i> Not Answered
+                            <% } %>
+                        </span>
+                        <span class="marks-badge"><%= question.marks %> marks</span>
+                    </div>
+                    
+                    <div class="result-content">
+                        <p class="question-text"><strong>Question:</strong> <%= question.questionText %></p>
+                        
+                        <% if (question.type === 'MCQ' || question.type === 'TrueFalse') { %>
+                            <div class="answer-section">
+                                <p><strong>Your Answer:</strong> 
+                                    <% if (answer.selectedAnswer) { %>
+                                        <span class="answer-value <%= status === 'correct' ? 'text-success' : 'text-danger' %>"><%= answer.selectedAnswer %></span>
+                                    <% } else { %>
+                                        <span class="text-muted">Not answered</span>\n                                    <% } %>
+                                </p>\n                                <% if (status !== 'correct' && status !== 'unanswered') { %>
+                                    <p><strong>Correct Answer:</strong> 
+                                        <span class=\"answer-value text-success\"><%= question.expectedAnswer %></span>
+                                    </p>
+                                <% } %>
+                            </div>\n                        <% } else if (question.type === 'Subjective') { %>
+                            <div class=\"answer-section\">\n                                <p><strong>Your Answer:</strong></p>\n                                <div class=\"submitted-answer\"><%= answer.selectedAnswer || 'Not answered' %></div>\n                                <% if (question.sampleAnswer) { %>
+                                    <p><strong>Expected Answer Keywords:</strong></p>
+                                    <div class=\"expected-answer\"><%= question.sampleAnswer %></div>
+                                <% } %>
+                            </div>
+                        <% } else if (question.type === 'Code Editor') { %>
+                            <div class=\"answer-section\">\n                                <p><strong>Your Code:</strong></p>\n                                <pre class=\"code-answer\"><code><%= answer.selectedAnswer || 'Not answered' %></code></pre>\n                            </div>\n                        <% } %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="results-actions">
+        <button class="btn btn-primary" onclick="downloadResults()">
+            <i class="ri-download-line"></i> Download Results
+        </button>
+        <button class="btn btn-secondary" onclick="goHome()">
+            <i class="ri-home-line"></i> Go to Home
+        </button>
+    </div>
+</div>
+
+   <script src="/js/test-results.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>library-tools</title>
+    <link rel="stylesheet" href="/css/library-tools.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="library-tools-container">
+    <div class="tools-grid">
+        <!-- Whiteboard Tool -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="ri-pen-nib-line"></i>
+            </div>
+            <h3>Whiteboard</h3>
+            <p>Interactive whiteboard for teaching</p>
+            <button class="tool-btn" data-tool="whiteboard" onclick="launchTool('whiteboard')">
+                Open
+            </button>
+        </div>
+
+        <!-- Video Lectures Tool -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="ri-video-line"></i>
+            </div>
+            <h3>Video Lectures</h3>
+            <p>Record and share video lectures</p>
+            <button class="tool-btn" data-tool="video-lectures" onclick="launchTool('video-lectures')">
+                Open
+            </button>
+        </div>
+
+        <!-- Presentations Tool -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="ri-file-ppt-line"></i>
+            </div>
+            <h3>Presentations</h3>
+            <p>Create and manage presentations</p>
+            <button class="tool-btn" data-tool="presentations" onclick="launchTool('presentations')">
+                Open
+            </button>
+        </div>
+
+        <!-- Code Editor Tool -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="ri-code-line"></i>
+            </div>
+            <h3>Code Editor</h3>
+            <p>Write and run code in browser</p>
+            <button class="tool-btn" data-tool="code-editor" onclick="launchTool('code-editor')">
+                Open
+            </button>
+        </div>
+
+        <!-- Catalog Search Tool -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="ri-search-line"></i>
+            </div>
+            <h3>Catalog Search</h3>
+            <p>Search library resources</p>
+            <button class="tool-btn" data-tool="catalog-search" onclick="launchTool('catalog-search')">
+                Open
+            </button>
+        </div>
+
+        <!-- Citation Manager Tool -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="ri-book-mark-line"></i>
+            </div>
+            <h3>Citation Manager</h3>
+            <p>Create and organize citations</p>
+            <button class="tool-btn" data-tool="citation-manager" onclick="launchTool('citation-manager')">
+                Open
+            </button>
+        </div>
+
+        <!-- Collaboration Space Tool -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="ri-team-line"></i>
+            </div>
+            <h3>Collaboration Space</h3>
+            <p>Collaborate on projects</p>
+            <button class="tool-btn" data-tool="collaboration-space" onclick="launchTool('collaboration-space')">
+                Open
+            </button>
+        </div>
+
+        <!-- Resource Booking Tool -->
+        <div class="tool-card">
+            <div class="tool-icon">
+                <i class="ri-calendar-event-line"></i>
+            </div>
+            <h3>Resource Booking</h3>
+            <p>Book study rooms and resources</p>
+            <button class="tool-btn" data-tool="resource-booking" onclick="launchTool('resource-booking')">
+                Open
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal for Tool Content -->
+    <div id="toolModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeTool()">&times;</span>
+        <div id="toolContentArea"></div>
+    </div>
+    </div>
+  </div>
+    <script src="/js/library-tools.js"></script>
+</body>
+</html>
+
+
+
+
+
+

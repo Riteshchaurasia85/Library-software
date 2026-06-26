@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle || 'Library Dashboard' %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/sidebar-toggle.css">
+    <link rel="stylesheet" href="/seat-view.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <%- include("partials/navbar") %>
+    <div class="navbar-scroller">
+        <div class="content-scroller-track">
+            <a href="/dashboard" class="content-card"><i class="ri-home-4-line"></i>Home</a>
+            <a href="/page/reg-student" class="content-card"><i class="ri-terminal-line"></i>Register Student</a>
+            <a href="/page/student-list" class="content-card"><i class="ri-file-ppt-line"></i>Students</a>
+            <a href="/page/views-seat" class="content-card"><i class="ri-eye-line"></i>Views seat</a>
+            <a href="/page/library-tools" class="content-card"><i class="ri-tools-line"></i>Library tools</a>
+            <a href="/create-test" class="content-card"><i class="ri-file-list-3-line"></i>Create Tests</a>
+            <a href="/page/calculator" class="content-card"><i class="ri-file-list-3-line"></i>Calculator</a>
+            <a href="/page/news" class="content-card"><i class="ri-government-line"></i>News</a>
+            <a href="/page/birthday" class="content-card"><i class="ri-gift-line"></i>BirthDay</a>
+            <a href="/page/e-book" class="content-card"><i class="ri-book-open-line"></i>E-book</a>
+            <a href="https://www.ridtech.in/internship" class="content-card"><i class="ri-briefcase-line"></i>Internship</a>
+            <a href="/page/contact" class="content-card"><i class="ri-customer-service-2-line"></i>Contact</a>
+        </div>
+    </div>
+    <%- include("partials/sidebar") %>
+
+    <div class="main-content">
+        <div class="page-body">
+            <%- include(content) %>
+        </div>
+    </div>
+  <script src="/js/index.js"></script>
+</body>
+</html>

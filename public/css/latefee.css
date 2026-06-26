@@ -1,0 +1,185 @@
+/* Fonts & Reset Setup */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #e3effd; /* Aapki website ka signature soft blue background */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* Container link tag wrapper alignment */
+a {
+    text-decoration: none;
+    align-self: flex-start; /* Big screens par back button ko left me align rakhega */
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto 15px auto; /* Card ke upar center alignment balance ke liye */
+}
+
+/* ==========================================================================
+   1. COMPONENTS STYLING (Desktop / Base Style)
+   ========================================================================== */
+
+/* Back Button styling (Image theme matching) */
+.back-btn {
+    background-color: #ffffff;
+    color: #2c3e50;
+    border: 1px solid #cbd5e1;
+    padding: 8px 24px;
+    border-radius: 20px; /* Highly curved soft corners */
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.back-btn:hover {
+    background-color: #f8fafc;
+    transform: translateX(-3px); /* Hover par thoda left slide effect */
+}
+
+/* Central Card Structure */
+.form-card {
+    background-color: #ffffff; /* Floating white card */
+    width: 100%;
+    max-width: 450px; /* Compact clean layout size */
+    padding: 35px 30px;
+    border-radius: 24px; /* Aapki theme jaisa curved edges */
+    box-shadow: 0 10px 25px rgba(120, 142, 255, 0.1); /* Soft blue blending shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Elements ke beech me equal automatic spacing */
+}
+
+/* Heading Typography */
+.form-card h1 {
+    font-family: 'Playfair Display', serif; /* Signature heading font */
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* Input Fields Style */
+.form-card input[type="number"] {
+    background-color: #fffafb; /* Soft cream white inputs */
+    border: 1px solid #e2e8f0;
+    outline: none;
+    padding: 14px 20px;
+    border-radius: 30px; /* Pill-shaped inputs */
+    font-size: 16px;
+    color: #4a4a4a;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+
+/* Input Focus state */
+.form-card input[type="number"]:focus {
+    border-color: #788eff; /* Theme blue highlight boundary */
+}
+
+/* Placeholder look text */
+.form-card input::placeholder {
+    color: #94a3b8;
+}
+
+/* Calculate Submit Button */
+.form-card button {
+    background-color: #788eff; /* Aapki theme ka iconic lavender-blue color */
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px; /* Curved corners */
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(120, 142, 255, 0.25);
+    transition: background 0.3s, transform 0.1s;
+}
+
+.form-card button:hover {
+    background-color: #6177f2;
+}
+
+.form-card button:active {
+    transform: scale(0.98);
+}
+
+/* Realtime Dynamic Calculation Text Output */
+#result {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    text-align: center;
+    margin-top: 5px;
+    min-height: 27px; /* UI shifts ko rokne ke liye space reserved rakhega */
+}
+
+
+/* ==========================================================================
+   2. RESPONSIVE MEDIA QUERIES (Laptops, Tablets, Mobiles)
+   ========================================================================== */
+
+/* --- TABLETS & LAPTOPS DISPLAY (Under 768px) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 30px 20px;
+    }
+    .form-card {
+        padding: 30px 25px;
+        border-radius: 20px;
+    }
+    .form-card h1 {
+        font-size: 26px;
+    }
+}
+
+/* --- MOBILE PHONES CONFIGURATIONS (Under 480px) --- */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 15px;
+    }
+    a {
+        margin-bottom: 10px;
+    }
+    .back-btn {
+        padding: 6px 18px;
+        font-size: 14px;
+    }
+    .form-card {
+        padding: 25px 20px;
+        border-radius: 16px; /* Screens ke hisab se curves bade na lagein */
+        gap: 16px;
+    }
+    .form-card h1 {
+        font-size: 22px;
+    }
+    .form-card input[type="number"] {
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+    .form-card button {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 15px;
+    }
+    #result {
+        font-size: 16px;
+    }
+}

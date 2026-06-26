@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-panel">
+    <div class="dashboard-header">
+        <div>
+            <h1>Dashboard</h1>
+            <!-- <p class="dashboard-subtitle">Manage candidates and seat status from one place.</p> -->
+        </div>
+        <div class="dashboard-actions">
+            <a href="/dashboard" class="btn btn-cancel">Cancel</a>
+            <a href="/page/reg-student" class="btn btn-add">Add Candidate</a>
+        </div>
+    </div>
+
+    <div class="dashboard-status">
+        <div class="status-pill">
+            <span class="status-dot"></span>
+            <div>
+                <span>Reserve</span>
+                <strong class="status-count"><%= reverseCount %></strong>
+            </div>
+        </div>
+        <div class="status-pill">
+            <span class="status-dot unreserve"></span>
+            <div>
+                <span>Unreserve</span>
+                <strong class="status-count"><%= unreserveCount %></strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <% dashboardSeats.forEach(function(seat) { %>
+            <a href="/student/<%= seat.id %>" class="seat-card <%= seat.status === 'Unreserve' ? 'seat-card-secondary' : '' %>" style="text-decoration: none; cursor: pointer;">
+                <div class="seat-avatar <%= seat.status === 'Unreserve' ? 'avatar-unreserve' : 'avatar-reserve' %>"><i class="ri-user-line"></i></div>
+                <div class="seat-content">
+                    <h2>#<%= seat.number %></h2>
+                    <!-- <p class="seat-status"><%= seat.status %></p> -->
+                    <!-- <p class="seat-meta"><%= seat.student %> • Updated <%= seat.updated %></p> -->
+                </div>
+            </a>
+        <% }) %>
+    </div>
+</div>
+
+
+</body>
+</html>

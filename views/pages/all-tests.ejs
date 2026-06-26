@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/all-tests.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <title>all-tests</title>
+</head>
+<body>
+    <div class="all-tests-container">
+    <div class="page-header">
+        <h1>All Tests</h1>
+        <a href="/create-test" class="btn btn-primary">
+            <i class="ri-add-line"></i> Create New Test
+        </a>
+    </div>
+
+    <% if (tests && tests.length > 0) { %>
+        <div class="tests-grid">
+            <% tests.forEach(test => { %>
+                <div class="test-card">
+                    <div class="test-card-header">
+                        <h3><%= test.title %></h3>
+                        <span class="test-status <%= test.isPublished ? 'published' : 'draft' %>">
+                            <%= test.isPublished ? 'Published' : 'Draft' %>
+                        </span>
+                    </div>
+                    
+                    <div class="test-card-body">
+                        <p class="test-description"><%= test.description %></p>
+                        
+                        <div class="test-meta">
+                            <div class="meta-item">
+                                <i class="ri-bookmark-line"></i>
+                                <span><strong>Subject:</strong> <%= test.subject %></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-question-line"></i>
+                                <span><strong>Questions:</strong> <%= test.totalQuestions %></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-timer-line"></i>
+                                <span><strong>Duration:</strong> <%= test.duration %> mins</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-award-line"></i>
+                                <span><strong>Passing:</strong> <%= test.passingPercentage %>%</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-bar-chart-line"></i>
+                                <span><strong>Difficulty:</strong> <%= test.difficulty %></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-eye-line"></i>
+                                <span><strong>Views:</strong> <%= test.viewCount || 0 %></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="ri-checkbox-circle-line"></i>
+                                <span><strong>Attempts:</strong> <%= test.attemptCount || 0 %></span>
+                            </div>
+                        </div>
+
+                        <% if (test.tags && test.tags.length > 0) { %>
+                            <div class="test-tags">
+                                <% test.tags.forEach(tag => { %>
+                                    <span class="tag"><%= tag %></span>
+                                <% }); %>
+                            </div>
+                        <% } %>
+                        <% if (test.isPublished && test.publicLink) { %>
+                            <div class=\"shareable-link-section\">
+                                <label><strong>Shareable Link:</strong></label>
+                                <div class=\"link-display\">
+                                    <input type=\"text\" value=\"<%= typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3000' %>/take-test/<%= test.publicLink %>\" readonly class=\"share-link\" onclick=\"this.select()\">
+                                    <button class=\"btn-copy\" onclick=\"copyLink('<%= test.publicLink %>')\">
+                                        <i class=\"ri-file-copy-line\"></i>
+                                    </button>\n                                </div>\n                            </div>\n                        <% } %>
+                        <div class="test-footer">
+                            <small>Created on <%= new Date(test.createdAt).toLocaleDateString() %></small>
+                        </div>
+                    </div>
+
+                    <div class="test-card-actions">
+                        <button class="btn btn-small btn-edit" onclick="editTest('<%= test._id %>')">
+                            <i class="ri-edit-line"></i> Edit
+                        </button>
+                        <button class="btn btn-small btn-view" onclick="viewTest('<%= test._id %>')">
+                            <i class="ri-eye-line"></i> View
+                        </button>
+                        <% if (test.isPublished) { %>
+                            <button class="btn btn-small btn-share" onclick="shareTest('<%= test.publicLink %>')">
+                                <i class="ri-share-line"></i> Share
+                            </button>
+                        <% } else { %>
+                            <button class="btn btn-small btn-publish" onclick="publishTest('<%= test._id %>')">
+                                <i class="ri-upload-cloud-line"></i> Publish
+                            </button>
+                        <% } %>
+                        <button class="btn btn-small btn-delete" onclick="deleteTest('<%= test._id %>')">
+                            <i class="ri-delete-bin-line"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="ri-file-list-3-line"></i>
+            </div>
+            <h2>No Tests Created Yet</h2>
+            <p>Start creating tests to get started</p>
+            <a href="/create-test" class="btn btn-primary">Create Your First Test</a>
+        </div>
+    <% } %>
+</div>
+
+<script src="public/js/all-tests.js"></script>
+</body>
+</html>
+
+
+

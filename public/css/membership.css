@@ -1,0 +1,184 @@
+    /* Fonts & Reset Setup */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #e3effd; /* Aapki website ka signature soft blue background */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* Back Button Link Container Positioning */
+a {
+    text-decoration: none;
+    align-self: flex-start;
+    max-width: 450px;
+    width: 100%;
+    margin: 0 auto 15px auto; /* Centered card layout alignment balance */
+}
+
+/* ==========================================================================
+   1. COMPONENTS STYLING (Desktop / Base Style)
+   ========================================================================== */
+
+/* Back Button Style (Theme Matched) */
+.back-btn {
+    background-color: #ffffff;
+    color: #2c3e50;
+    border: 1px solid #cbd5e1;
+    padding: 8px 24px;
+    border-radius: 20px; /* Rounded smooth corners */
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.back-btn:hover {
+    background-color: #f8fafc;
+    transform: translateX(-3px); /* Subtle intuitive hover sliding effect */
+}
+
+/* Central Tool Box Card Structure */
+.form-card {
+    background-color: #ffffff; /* Premium floating container white box */
+    width: 100%;
+    max-width: 450px;
+    padding: 35px 30px;
+    border-radius: 24px; /* Theme curved signature look */
+    box-shadow: 0 10px 25px rgba(120, 142, 255, 0.1); /* Soft blend shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Equal internal grids padding spacing */
+}
+
+/* Tool Section Header Title */
+.form-card h1 {
+    font-family: 'Playfair Display', serif; /* Signature heading typeface */
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* Amount/Number Selector Input Field */
+.form-card input[type="number"] {
+    background-color: #fffafb; /* Soft light cream input body tint */
+    border: 1px solid #e2e8f0;
+    outline: none;
+    padding: 14px 20px;
+    border-radius: 30px; /* Pill-shaped curved layout boundaries */
+    font-size: 16px;
+    color: #4a4a4a;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    transition: border-color 0.2s ease;
+}
+
+/* Focus highlighting ring element */
+.form-card input[type="number"]:focus {
+    border-color: #788eff; /* Main lavender-blue brand color boundary */
+}
+
+.form-card input::placeholder {
+    color: #94a3b8;
+}
+
+/* Discount Processor Button */
+.form-card button {
+    background-color: #788eff; /* Iconic lavender blue color asset */
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(120, 142, 255, 0.25);
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.form-card button:hover {
+    background-color: #6177f2;
+}
+
+.form-card button:active {
+    transform: scale(0.98); /* Smooth button depression micro-interaction feedback */
+}
+
+/* Realtime InnerHTML Results Output Element */
+#result {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    text-align: center;
+    margin-top: 5px;
+    min-height: 27px; /* Layout layout breaking jump blocks preventer */
+}
+
+
+/* ==========================================================================
+   2. RESPONSIVE CONFIGURATIONS (Laptops, Tablets, Mobiles)
+   ========================================================================== */
+
+/* --- TABLET SCREEN ADJUSTMENTS (Under 768px) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 30px 20px;
+    }
+    .form-card {
+        padding: 30px 25px;
+        border-radius: 20px;
+    }
+    .form-card h1 {
+        font-size: 26px;
+    }
+}
+
+/* --- MOBILE PHONES SYSTEM (Under 480px) --- */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 15px;
+    }
+    a {
+        margin-bottom: 10px;
+    }
+    .back-btn {
+        padding: 6px 18px;
+        font-size: 14px;
+    }
+    .form-card {
+        padding: 25px 20px;
+        border-radius: 16px; /* Reduced responsive scaling curves */
+        gap: 16px;
+    }
+    .form-card h1 {
+        font-size: 22px;
+    }
+    .form-card input[type="number"] {
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+    .form-card button {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 15px;
+    }
+    #result {
+        font-size: 16px;
+    }
+}

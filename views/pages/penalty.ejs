@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penalty</title>
+    <link rel="stylesheet" href="/css/penalty.css">
+</head>
+<body>
+    <a href="/dashboard">
+     <button class="back-btn">← Back</button>
+    </a>
+
+<div class="form-card">
+<h1>Lost Book Penalty</h1>
+<input type="number"
+id="bookPrice"
+placeholder="Book Price">
+<input type="number"
+id="months"
+placeholder="Months Lost">
+<select id="rareBook">
+<option value="no">Normal Book </option>
+<option value="yes">
+Rare Book
+</option>
+</select>
+<button onclick="calculatePenalty()">
+Calculate
+</button>
+<h2 id="result"></h2>
+</div>
+<script src="/js/penalty.js"></script>
+</body>
+</html>
+

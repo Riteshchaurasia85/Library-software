@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student-list</title>
+    <link rel="stylesheet" href="/css/student-list.css">
+</head>
+<body>
+    <div class="student-list-panel">
+    <div class="table-top">
+        <div>
+            <h1>Students List</h1>
+            <!-- <p>All candidate records from MongoDB are shown below.</p> -->
+            <a href="/dashboard" class="btn btn-cancel">Cancel</a>
+
+        </div>
+    </div>
+
+    <% if (!students || students.length === 0) { %>
+        <div class="form-notice">No students found yet. Add candidates first.</div>
+    <% } else { %>
+        <div class="table-wrapper">
+            <table class="student-table">
+                <thead>
+                    <tr>
+                        <th>S. No.</th>
+                        <th>Name</th>
+                        <th>Ph. Number</th>
+                        <th>Seat Type</th>
+                        <th>Shift</th>
+                        <th>Fees</th>
+                        <th>Joining Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% students.forEach(function(student, index) { %>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= student.fullName %></td>
+                            <td><%= student.mobileNumber %></td>
+                            <td><%= student.seatType %></td>
+                            <td><%= student.shift %></td>
+                            <td><%= student.fees %></td>
+                            <td><%= student.joiningDate ? new Date(student.joiningDate).toLocaleDateString('en-GB') : '-' %></td>
+                            <td>
+                                <span class="status-pill <%= student.paymentStatus === 'Paid' ? 'active' : 'unpaid' %>"><%= student.paymentStatus %></span>
+                            </td>
+                            <td>
+                                <button class="btn-delete" onclick="deleteStudent('<%= student._id %>', '<%= student.fullName %>')">Delete</button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    <% } %>
+</div>
+    <script src="/js/student-list.js"></script>
+
+</body>
+</html>
+
+

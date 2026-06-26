@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <link rel="stylesheet" href="/css/library.css">
+</head>
+<body>
+      <div class="main-content-library">
+    <!-- HEADER -->
+    <div class="top-header">
+        <div class="header-left">
+            <span class="material-symbols-outlined">
+                notifications
+            </span>
+            <h1>
+                Library Updates
+            </h1>
+        </div>
+    </div>
+    <!-- TABS -->
+    <div class="tabs">
+        <button class="tab active"
+        onclick="showSection('courses', event)">
+            🎓 IIT/NIT Courses
+        </button>
+
+        <button class="tab"
+        onclick="showSection('books', event)">
+            📚 New Books
+        </button>
+
+        <button class="tab"
+        onclick="showSection('papers', event)">
+            📰 Daily Papers
+        </button>
+
+    </div>
+
+    <!-- COURSES SECTION -->
+    <div id="courses-section">
+        <!-- CARD 1 -->
+        <div class="course-card">
+            <div class="course-left">
+                <div class="icon-circle">
+                    🎓
+                </div>
+
+                <div>
+                    <h2>
+                        IIT - Online Courses
+                    </h2>
+                </div>
+            </div>
+
+            <a href="https://swayam.gov.in/nc_details/NPTEL"
+            target="_blank">
+                <button class="view-btn">
+                    View
+                </button>
+            </a>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="course-card">
+            <div class="course-left">
+                <div class="icon-circle">
+                    🛡️
+                </div>
+
+                <div>
+                    <h2>
+                        NIT - courses updates
+                    </h2>
+                </div>
+
+            </div>
+
+            <a href="https://swayam.gov.in/nc_details/NPTEL"
+            target="_blank">
+                <button class="view-btn">
+
+                    View
+
+                </button>
+
+            </a>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="course-card">
+
+            <div class="course-left">
+
+                <div class="icon-circle">
+                    🤖
+                </div>
+
+                <div>
+
+                    <h2>
+                        NPTEL - Advanced AI Course
+                    </h2>
+                </div>
+
+            </div>
+
+            <a href="https://swayam.gov.in/nc_details/NPTEL"
+            target="_blank">
+
+                <button class="view-btn">
+
+                    View
+
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+    <!-- BOOK SECTION -->
+    <div id="books-section"
+    style="display:none;">
+
+        <div class="course-card">
+
+            <div class="course-left">
+
+                <div class="icon-circle">
+                    📘
+                </div>
+
+                <div>
+
+                    <h2>
+                       Data Structure and algorithm E-Book
+                    </h2>
+
+                    <p>
+                      DSA is the basic way to organize data and solve problems efficiently
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a href="https://www.ridtech.in/ebook/?search=&filter=all&sort=newest"
+            target="_blank">
+
+                <button class="view-btn">
+
+                    Read
+
+                </button>
+
+            </a>
+
+        </div>
+
+        <div class="course-card">
+
+            <div class="course-left">
+
+                <div class="icon-circle">
+                    📗
+                </div>
+
+                <div>
+
+                    <h2>
+                        Core Python E-Book
+                    </h2>
+
+                    <p>
+                       Core Python e‑book is a short guide to learn Python basics in one place.
+
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a href="https://www.ridtech.in/ebook/?search=&filter=all&sort=newest"
+            target="_blank">
+
+                <button class="view-btn">
+
+                    Read
+
+                </button>
+
+            </a>
+            
+
+                </div>
+
+                 <div class="course-card">
+
+            <div class="course-left">
+
+                <div class="icon-circle">
+                    📘
+                </div>
+
+                <div>
+
+                    <h2>
+                      Node JS E-Book
+                    </h2>
+
+                    <p>
+                     Node.js e‑book is a short guide to learn backend JavaScript with Node.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a href="https://www.ridtech.in/ebook/?search=&filter=all&sort=newest"
+            target="_blank">
+
+                <button class="view-btn">
+
+                    Read
+
+                </button>
+
+            </a>
+
+        </div>
+
+
+
+
+    </div>
+    
+    <!-- PAPER SECTION -->
+    <div id="papers-section"
+    style="display:none;">
+
+        <div class="course-card">
+
+            <div class="course-left">
+
+                <div class="icon-circle">
+                    📰
+                </div>
+
+                <div>
+
+                    <h2>
+                        Patrika - Bhopal Edition
+                    </h2>
+
+                    <p>
+                        Today's Edition
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a href="https://www.patrika.com/bhopal-news"
+            target="_blank">
+
+                <button class="view-btn">
+
+                    Open
+
+                </button>
+
+            </a>
+
+        </div>
+
+        <div class="course-card">
+
+            <div class="course-left">
+
+                <div class="icon-circle">
+                    🗞️
+                </div>
+
+                <div>
+
+                    <h2>
+                        Times Of India
+                    </h2>
+
+                    <p>
+                        Breaking News
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a href="https://timesofindia.indiatimes.com/"
+            target="_blank">
+
+                <button class="view-btn">
+
+                    Open
+
+                </button>
+
+            </a>
+
+        </div>
+        
+         <div class="course-card">
+
+            <div class="course-left">
+
+                <div class="icon-circle">
+                    🗞️
+                </div>
+
+                <div>
+
+                    <h2>
+                       Dainik Bhaskar
+                    </h2>
+
+                    <p>
+                        Breaking News
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a href="https://www.bhaskar.com/epaper/state/madhya-pradesh"
+            target="_blank">
+
+                <button class="view-btn">
+
+                    Open
+
+                </button>
+
+            </a>
+
+        </div>
+
+   
+
+    </div>
+</div>
+   <script src="/js/library.js"></script>
+</body>
+</html>
+
+
+
+

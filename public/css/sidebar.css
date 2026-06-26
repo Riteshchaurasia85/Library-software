@@ -1,0 +1,78 @@
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    width: 260px;
+    background: #13242e;
+    color: #e7d99d;
+    overflow-y: auto;
+    padding: 18px 0;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.18);
+}
+
+.sidebar-header strong {
+    display: block;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+}
+
+.sidebar-header p {
+    font-size: 12px;
+    color: #9fb7c0;
+    margin-top: 4px;
+}
+
+.sidebar .menu {
+    list-style: none;
+    padding-left: 25px;
+    margin: 0;
+}
+
+.sidebar .menu li + li {
+    margin-top: 5px;
+}
+
+.sidebar .menu a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+    color: #e7e1c7;
+    text-decoration: none;
+    border-radius: 14px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar .menu a:hover,
+.sidebar .menu a.active {
+    background: rgba(233, 242, 247, 0.12);
+    transform: translateX(2px);
+}
+
+.sidebar .menu i {
+    font-size: 18px;
+}
+
+.sidebar .menu span {
+    font-size: 18px;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    font-size: 130px;
+    color: #09a4f8;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 9px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(39, 47, 90, 0.801);
+}

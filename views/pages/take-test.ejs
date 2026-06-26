@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take-test</title>
+    <link rel="stylesheet" href="/css/take-test.css">
+</head>
+<body>
+    <div class="take-test-container">
+    <div class="test-interface">
+        <!-- Header with Timer -->
+        <div class="test-header">
+            <div class="test-info">
+                <h1><%= test.title %></h1>
+                <p class="test-subject"><%= test.subject %></p>
+                <p class="test-description"><%= test.description %></p>
+            </div>
+            <div class="test-timer">
+                <div class="timer-display">
+                    <i class="ri-time-line"></i>
+                    <span id="timer"><%= test.duration %>:00</span>
+                </div>
+                <div class="test-stats">
+                    <div class="stat">
+                        <span class="stat-label">Questions</span>
+                        <span class="stat-value"><%= questions.length %></span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Duration</span>
+                        <span class="stat-value"><%= test.duration %> min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="test-instructions">
+            <h3>Test Instructions</h3>
+            <p><%= test.settings.instructions || 'Please read each question carefully and select your answer.' %></p>
+            <div class="instruction-points">
+                <ul>
+                    <li>Total Questions: <strong><%= questions.length %></strong></li>
+                    <li>Passing Percentage: <strong><%= test.passingPercentage %>%</strong></li>
+                    <li><% if(test.settings.shuffleQuestions) { %>Questions will be shuffled<% } else { %>Questions will appear in order<% } %></li>
+                    <li>Negative Marking: <% if(test.settings.negativeMarking) { %><strong>Yes (-<%= test.settings.negativeMarkValue %> marks)</strong><% } else { %><strong>No</strong><% } %></li>
+                </ul>
+            </div>
+            <div class="instruction-actions">
+                <button class="btn btn-primary" onclick="startTest()">Start Test</button>
+                <button class="btn btn-secondary" onclick="goBack()">Go Back</button>
+            </div>
+        </div>
+
+        <!-- Test Content (Hidden initially) -->
+        <div class="test-content" id="testContent" style="display: none;">
+            <div class="test-sidebar">
+                <div class="question-navigator">
+                    <h3>Questions</h3>
+                    <div class="question-list" id="questionList">
+                        <!-- Questions will be populated by JavaScript -->
+                    </div>
+                </div>
+                <button class="btn btn-danger btn-full" onclick="submitTest()">Submit Test</button>
+            </div>
+
+            <div class="test-main">
+                <form id="testForm">
+                    <div class="questions-wrapper" id="questionsWrapper">
+                        <!-- Questions will be populated by JavaScript -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  <script src="/js/take-test.js"></script>
+
+</body>
+</html>
+

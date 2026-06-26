@@ -1,0 +1,393 @@
+    /* Custom UI Framework Setup */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ==========================================================================
+   1. GLOBAL CONTAINER & HEADER
+   ========================================================================== */
+.seat-page-panel {
+    max-width: 1400px;
+    margin: 20px auto;
+    width: 100%;
+    background-color: #f6faff;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 24px;    
+}
+
+/* Header row layout */
+.seat-view-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 11px;
+}
+
+.seat-view-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.seat-view-header p {
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+/* Right alignment tools */
+.seat-view-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.seat-view-date {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 6px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.btn-refresh {
+    background-color: #0f172a; /* Dark sleek header action button */
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-refresh:hover {
+    background-color: #1e293b;
+}
+
+/* ==========================================================================
+   2. TOP DASHBOARD SUMMARY CARDS
+   ========================================================================== */
+.seat-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.seat-summary-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+.summary-card-content h2 {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.summary-card-content p {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    /* margin-top: 5px; */
+}
+
+/* Rounded Circle Status Icons */
+.summary-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.summary-icon-blue { background-color: #eff6ff; color: #3b82f6; }
+.summary-icon-green { background-color: #ecfdf5; color: #10b981; }
+.summary-icon-yellow { background-color: #fffbeb; color: #f59e0b; }
+.summary-icon-purple { background-color: #faf5ff; color: #8b5cf6; }
+
+
+/* ==========================================================================
+   3. FILTERS SYSTEM STRIP
+   ========================================================================== */
+.seat-filter-row {
+    background: transparent;
+    margin-bottom: 11px;
+}
+
+.seat-filter-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.filter-group select, 
+.filter-group input {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #1e293b;
+    font-family: 'Poppins', sans-serif;
+    min-width: 114px;
+    outline: none;
+    height: 44px;
+}
+
+.btn-add {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 25px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 44px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #2563eb;
+}
+
+
+/* ==========================================================================
+   4. SEAT BOARD SYSTEM (MAIN SPLIT VIEW)
+   ========================================================================== */
+.seat-board-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px; /* 2 Column dynamic mapping: Grid + Sidebar */
+    gap: 30px;
+    align-items: start;
+}
+
+/* Left Canvas Panel */
+.seat-board-grid {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 30px;
+    overflow-x: auto; /* Handles horizontal tablet adjustments */
+}
+
+/* Columns Header Map */
+.header-row, 
+.seat-grid-row {
+    display: grid;
+    grid-template-columns: 40px repeat(8, 1fr); /* 1 index map row name + 8 structural block items */
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+    min-width: 650px; /* Preserve integrity on shrink */
+}
+
+.seat-grid-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    height: 40px;
+}
+
+/* Individual Interactive Core Seat Item */
+.seat-box {
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+/* Color codes mapping as in design mockup */
+.seat-box.occupied { background-color: #a7f3d0; color: #065f46; } /* Soft Green */
+.seat-box.available { background-color: #ffffff; color: #475569; border-color: #cbd5e1; } /* Clean White with Gray line */
+.seat-box.reserved { background-color: #a7f3d0; color: #065f46; border-color: transparent; } /* Green for reserved */
+.seat-box.maintenance { background-color: #e2e8f0; color: #475569; } /* Gray muted text */
+
+/* Unreversed seats (red) */
+.seat-box.unreversed { background-color: #fee2e2; color: #991b1b; border-color: #fecaca; } /* Light Red */
+.seat-box.unreverse { background-color: #fee2e2; color: #991b1b; border-color: #fecaca; } /* Alias */
+
+
+/* ==========================================================================
+   5. SIDEBAR CARDS (CHART & INFORMATION LEGENDS)
+   ========================================================================== */
+.seat-board-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.legend-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.legend-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+/* Doughnut Chart Alignment Container */
+.chart-container {
+    position: relative;
+    margin: 0 auto 25px auto;
+    height: 180px;
+    width: 180px;
+}
+
+/* Custom Row Information Legend */
+.chart-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* Color dot links matching chart slices */
+.legend-dot.occupied { background-color: #10b981; }
+.legend-dot.available { background-color: #cbd5e1; }
+.legend-dot.reserved { background-color: #10b981; }
+.legend-dot.unreversed { background-color: #ef4444; }
+
+.legend-label {
+    font-size: 13px;
+    color: #475569;
+    font-weight: 500;
+}
+
+
+/* ==========================================================================
+   6. RESPONSIVE MEDIA BREAKPOINTS (Laptops, Tablets, Mobiles)
+   ========================================================================== */
+
+/* --- LAPTOPS DISPLAY ADJUSTMENTS (Under 1200px) --- */
+@media (max-width: 1200px) {
+    .seat-summary-grid {
+        grid-template-columns: repeat(2, 1fr); /* 4 Columns down to 2x2 grid matrix */
+        gap: 20px;
+    }
+    .seat-board-layout {
+        grid-template-columns: 1fr; /* Sidebar wraps down beneath main layout structural container */
+    }
+    .seat-board-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Sidebar objects display parallel horizontally */
+        gap: 20px;
+    }
+}
+
+/* --- TABLET CONFIGURATIONS (Under 768px) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+    .seat-view-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .seat-view-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .seat-filter-form {
+        gap: 15px;
+    }
+    .filter-group, .filter-group select, .filter-group input {
+        width: 100%; /* Forms inputs expand fully inside horizontal block widths */
+    }
+    .btn-add {
+        width: 100%;
+    }
+    .seat-board-sidebar {
+        grid-template-columns: 1fr; /* Switch side structures inside unified 1 Column block */
+    }
+}
+
+/* --- SMARTPHONES DISPLAY SYSTEM (Under 480px) --- */
+@media (max-width: 480px) {
+    .seat-summary-grid {
+        grid-template-columns: 1fr; /* Direct vertical stack mapping */
+        gap: 15px;
+    }
+    .seat-view-header h1 {
+        font-size: 22px;
+    }
+    .seat-board-grid {
+        padding: 15px; /* Compresses internal empty spaces neatly */
+    }
+    .header-row, .seat-grid-row {
+        gap: 8px; /* Compact structural grids spacing internally */
+    }
+    .seat-box {
+        height: 38px;
+        font-size: 11px;
+    }
+}

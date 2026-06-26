@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="/css/sidebar.css">
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+    <!-- <div class="sidebar-toggle-btn" id="sidebarToggle">
+        <i class="ri-menu-line"></i>
+    </div> -->
+    <ul class="menu">
+        <li><a href="/dashboard" class="<%= activePage === 'dashboard' ? 'active' : '' %>"><i class="ri-dashboard-line"></i><span>Dashboard</span></a></li>
+        <li><a href="/page/reg-student" class="<%= activePage === 'reg-student' ? 'active' : '' %>"><i class="ri-user-add-line"></i><span>Reg. Student</span></a></li>
+        <li><a href="/page/student-list" class="<%= activePage === 'student-list' ? 'active' : '' %>"><i class="ri-team-line"></i><span>Student List</span></a></li>
+        <li><a href="/page/views-seat" class="<%= activePage === 'views-seat' ? 'active' : '' %>"><i class="ri-map-pin-2-line"></i><span>Views Seat</span></a></li>
+        <li><a href="/page/library-tools" class="<%= activePage === 'library-tools' ? 'active' : '' %>"><i class="ri-tools-line"></i><span>Library Tools</span></a></li>
+        <li><a href="/page/create-tests" class="<%= activePage === 'create-tests' ? 'active' : '' %>"><i class="ri-file-paper-line"></i><span>Create Tests</span></a></li>
+        <li><a href="/page/calculator" class="<%= activePage === 'calculator' ? 'active' : '' %>"><i class="ri-calculator-line"></i><span>Calculator</span></a></li>
+        <li><a href="/page/news" class="<%= activePage === 'news' ? 'active' : '' %>"><i class="ri-newspaper-line"></i><span>News</span></a></li>
+        <li><a href="/page/birthday" class="<%= activePage === 'birthday' ? 'active' : '' %>"><i class="ri-cake-2-line"></i><span>Birthday</span></a></li>
+        <li><a href="/page/e-book" class="<%= activePage === 'e-book' ? 'active' : '' %>"><i class="ri-book-2-line"></i><span>E-book</span></a></li>
+        <li><a href="/page/contact" class="<%= activePage === 'contact' ? 'active' : '' %>"><i class="ri-customer-service-2-line"></i><span>Contact</span></a></li>
+
+
+    </ul>
+</aside>
+</body>
+</html>
+

@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create-test</title>
+    <link rel="stylesheet" href="/css/create-test.css">
+</head>
+<body>
+<!-- Modal Styles -->
+
+    <div class="test-creator-container">
+    <div class="test-creator">
+        <!-- Header -->
+        <div class="test-header">
+            <div class="header-icon">
+                <i class="ri-file-list-3-line"></i>
+                <span>Teaching Tools - Test Creator</span>
+            </div>
+            <div class="steps-nav">
+            <div class="step-item active" onclick="switchStep(1)">
+                <!-- <span class="step-number">1</span> -->
+                <span class="step-label">Basics</span>
+            </div>
+            <div class="step-item" onclick="switchStep(2)">
+                <!-- <span class="step-number">2</span> -->
+                <span class="step-label">Smart Questions</span>
+            </div>
+            <div class="step-item" onclick="switchStep(3)">
+                <!-- <span class="step-number">3</span> -->
+                <span class="step-label">Settings</span>
+            </div>
+            <div class="step-item" onclick="switchStep(4)">
+                <!-- <span class="step-number">4</span> -->
+                <span class="step-label">Publish</span>
+            </div>
+        </div>
+            <button class="close-btn" onclick="closeTestCreator()">
+                Close
+            </button>
+        </div>
+
+
+        <!-- Content Wrapper -->
+        <div class="steps-content">
+
+            <!-- Step 1: Basics -->
+            <div class="step-content active" id="step-1">
+                <h2>Step 1: Basic Information</h2>
+                <form id="basicsForm" class="form-grid">
+                    <div class="form-group">
+                        <label for="testTitle">Test Title</label>
+                        <input type="text" id="testTitle" name="title" placeholder="Enter test title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testSubject">Subject</label>
+                        <input type="text" id="testSubject" name="subject" placeholder="e.g., Java, Mathematics" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="testDescription">Description</label>
+                        <textarea id="testDescription" name="description" placeholder="Enter test description" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="totalQuestions">Total Questions</label>
+                        <input type="number" id="totalQuestions" name="totalQuestions" placeholder="e.g., 50" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes)</label>
+                        <input type="number" id="duration" name="duration" placeholder="e.g., 60" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passingPercentage">Passing Percentage</label>
+                        <input type="number" id="passingPercentage" name="passingPercentage" placeholder="e.g., 40" min="0" max="100" required>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="difficulty">Difficulty Level</label>
+                        <select id="difficulty" name="difficulty" required>
+                            <option value="Easy">Easy</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" id="category" name="category" placeholder="e.g., MCQ Test" required>
+                    </div>
+                </form>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="switchStep(2)">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Smart Questions -->
+            <div class="step-content" id="step-2">
+                <h2>Step 2: Smart Builder</h2>
+                
+                <div class="smart-builder">
+                    <div class="builder-toolbar">
+                        <button class="btn btn-ai" onclick="generateAIQuestions()">
+                            <i class="ri-magic-line"></i> AI Generate
+                        </button>
+                        <input type="text" id="aiSubject" class="subject-input" placeholder="Enter subject, e.g., 'Java 8 Lambda' or 'Networking OSI'">
+                        <button class="btn btn-bulk" onclick="triggerBulkUpload()">
+                            <i class="ri-upload-cloud-2-line"></i> Bulk Upload (CSV/Excel)
+                        </button>
+                        <input type="file" id="bulkUploadFile" style="display:none" accept=".csv,.xlsx" onchange="handleBulkUpload(event)">
+                    </div>
+
+                    <!-- Add Question Section -->
+                    <div class="add-question-section">
+                        <div class="section-header">
+                            <h3>Add New Question</h3>
+                            <span class="collapse-icon" onclick="toggleAddQuestion()">▼</span>
+                        </div>
+
+                        <div class="question-form" id="questionForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Question Type</label>
+                                    <select id="questionType" onchange="updateQuestionType()" required>
+                                        <option value="">Question Type</option>
+                                        <option value="MCQ">MCQ</option>
+                                        <option value="Subjective">Subjective</option>
+                                        <option value="Code Editor">Code Editor</option>
+                                        <option value="True/False">True/False</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Question Text</label>
+                                    <div class="editor-toolbar">
+                                        <button type="button" class="editor-btn" onclick="formatText('bold')" title="Bold"><strong>B</strong></button>
+                                        <button type="button" class="editor-btn" onclick="formatText('italic')" title="Italic"><em>I</em></button>
+                                        <button type="button" class="editor-btn" onclick="formatText('underline')" title="Underline"><u>U</u></button>
+                                        <button type="button" class="editor-btn" onclick="formatText('link')" title="Link"><i class="ri-link"></i></button>
+                                        <button type="button" class="editor-btn" onclick="formatText('image')" title="Image"><i class="ri-image-add-line"></i></button>
+                                        <button type="button" class="editor-btn" onclick="formatText('list')" title="List"><i class="ri-list-unordered"></i></button>
+                                        <button type="button" class="editor-btn" onclick="formatText('code')" title="Code"><i class="ri-code-line"></i></button>
+                                    </div>
+                                    <textarea id="questionText" class="question-editor" placeholder="Write your question here..." required></textarea>
+                                </div>
+                            </div>
+
+                            <!-- MCQ Options -->
+                            <div id="mcqOptions" style="display:none;">
+                                <div class="options-grid">
+                                    <div class="option-item">
+                                        <label>A</label>
+                                        <input type="text" id="optionA" class="option-input" placeholder="Option 1 Text">
+                                    </div>
+                                    <div class="option-item">
+                                        <label>B</label>
+                                        <input type="text" id="optionB" class="option-input" placeholder="Option 2 Text">
+                                    </div>
+                                    <div class="option-item">
+                                        <label>C</label>
+                                        <input type="text" id="optionC" class="option-input" placeholder="Option 3 Text">
+                                    </div>
+                                    <div class="option-item">
+                                        <label>D</label>
+                                        <input type="text" id="optionD" class="option-input" placeholder="Option 4 Text">
+                                    </div>
+                                </div>
+                                <div class="correct-answer">
+                                    <label>Correct Answer</label>
+                                    <select id="correctAnswer" required>
+                                        <option value="">Select Correct Answer</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- True/False Options -->
+                            <div id="tfOptions" style="display:none;">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Correct Answer</label>
+                                        <div class="tf-options">
+                                            <label class="checkbox-label">
+                                                <input type="radio" name="tfAnswer" value="True"> True
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="radio" name="tfAnswer" value="False"> False
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Subjective Options -->
+                            <div id="subjectiveOptions" style="display:none;">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Keywords/Expected Answer (Comma separated)</label>
+                                        <textarea id="keywordAnswer" placeholder="e.g., polymorphism, inheritance, encapsulation" rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Marks</label>
+                                    <input type="number" id="questionMarks" placeholder="e.g., 1" min="0.5" step="0.5" value="1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Difficulty</label>
+                                    <select id="questionDifficulty">
+                                        <option value="Easy">Easy</option>
+                                        <option value="Medium" selected>Medium</option>
+                                        <option value="Hard">Hard</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-add-question" onclick="addQuestion()">
+                                <i class="ri-add-line"></i> Add Question
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Questions List -->
+                    <div class="questions-list">
+                        <h3>Questions Added: <span id="questionCount">0</span></h3>
+                        <div id="questionsContainer" class="questions-container"></div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="switchStep(1)">Back</button>
+                    <button class="btn btn-primary" onclick="switchStep(3)">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Settings -->
+            <div class="step-content" id="step-3">
+                <h2>Step 3: Settings</h2>
+                <form id="settingsForm" class="settings-grid">
+                    <div class="form-group">
+                        <label for="showAnswer">Show Answers After Test</label>
+                        <select id="showAnswer" name="showAnswer">
+                            <option value="no">No</option>
+                            <option value="immediately">Immediately</option>
+                            <option value="after_completion">After Test Completion</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="shuffleQuestions">Shuffle Questions</label>
+                        <select id="shuffleQuestions" name="shuffleQuestions">
+                            <option value="no">No</option>
+                            <option value="yes" selected>Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="shuffleOptions">Shuffle Options</label>
+                        <select id="shuffleOptions" name="shuffleOptions">
+                            <option value="no">No</option>
+                            <option value="yes" selected>Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="allowReview">Allow Review</label>
+                        <select id="allowReview" name="allowReview">
+                            <option value="no">No</option>
+                            <option value="yes" selected>Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="negativeMarking">Negative Marking</label>
+                        <select id="negativeMarking" name="negativeMarking">
+                            <option value="no" selected>No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="negativeMarkDiv" style="display:none;">
+                        <label for="negativeMarkValue">Negative Mark Value</label>
+                        <input type="number" id="negativeMarkValue" name="negativeMarkValue" placeholder="e.g., 0.5" min="0" step="0.1">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="instructions">Instructions</label>
+                        <textarea id="instructions" name="instructions" placeholder="Enter test instructions" rows="5"></textarea>
+                    </div>
+                </form>
+
+                <script>
+                    document.getElementById('negativeMarking').addEventListener('change', function() {
+                        document.getElementById('negativeMarkDiv').style.display = this.value === 'yes' ? 'block' : 'none';
+                    });
+                </script>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="switchStep(2)">Back</button>
+                    <button class="btn btn-primary" onclick="switchStep(4)">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Publish -->
+ <div class="step-content" id="step-4">
+    <h2>Step 4: Publish & Share</h2>
+    <form id="publishForm" class="publish-grid">
+        <div class="form-group full-width">
+            <label for="publishType">Publication Type</label>
+            <select id="publishType" name="publishType" required>
+                <option value="private">Private (Only you)</option>
+                <option value="link">Shareable Link</option>
+                <option value="students">Assign to Students</option>
+                <option value="public">Public</option>
+            </select>
+        </div>
+
+        <div id="studentsDiv" style="display:none;" class="form-group full-width">
+            <label>Select Students</label>
+            <div class="students-list">
+                <input type="text" placeholder="Search students..." class="search-box">
+                <div id="studentCheckboxes"></div>
+            </div>
+        </div>
+
+        <div class="form-group full-width">
+            <label for="tags">Tags (Comma separated)</label>
+            <input type="text" id="tags" name="tags" placeholder="e.g., Java, OOP, Important">
+        </div>
+
+        <div class="info-box">
+            <h3>Test Summary</h3>
+            <ul id="testSummary">
+                <li>Total Questions: <span id="summaryQuestions">0</span></li>
+                <li>Duration: <span id="summaryDuration">0</span> minutes</li>
+                <li>Total Marks: <span id="summaryMarks">0</span></li>
+                <li>Passing %: <span id="summaryPassing">0</span>%</li>
+            </ul>
+        </div>
+    </form>
+
+    <div class="button-group">
+        <button class="btn btn-secondary" onclick="switchStep(3)">Back</button>
+        <button type="button" class="btn btn-success" onclick="publishTest(event)">
+            <i class="ri-check-line"></i> Publish Test
+        </button>
+    </div>
+</div>
+
+<div id="shareableLinkModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Test Published Successfully!</h2>
+            <button class="modal-close" onclick="closeShareModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p class="success-message">Your test has been published and is ready to share with students!</p>
+            
+            <div class="shareable-section">
+                <h3>Shareable Link</h3>
+                <div class="link-container">
+                    <input type="text" id="shareLink" readonly class="share-link-input">
+                    <button class="btn btn-primary" onclick="copyToClipboard(event)">
+                        <i class="ri-file-copy-line"></i> Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <div class="share-methods">
+                <h3>Share via</h3>
+                <div class="share-buttons">
+                    <button class="share-btn whatsapp" onclick="shareVia('whatsapp', event)">
+                        <i class="ri-whatsapp-line"></i> WhatsApp
+                    </button>
+                    <button class="share-btn email" onclick="shareVia('email', event)">
+                        <i class="ri-mail-line"></i> Email
+                    </button>
+                    <button class="share-btn facebook" onclick="shareVia('facebook', event)">
+                        <i class="ri-facebook-line"></i> Facebook
+                    </button>
+                </div>
+            </div>
+
+            <div class="test-details">
+                <h3>Test Details</h3>
+                <ul id="publishedTestDetails"></ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" onclick="redirectToTests()">
+                <i class="ri-arrow-right-line"></i> View All Tests
+            </button>
+            <button class="btn btn-secondary" onclick="closeShareModal()">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+  <script src="/js/create-test.js"></script>
+</body>
+</html>
