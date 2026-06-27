@@ -8,6 +8,12 @@ require('../Controllers/calculationController');
 router.get('/', (req, res) => {
     res.redirect('/dashboard');
 });
+
+// CALCULATOR PAGE
+router.get('/calculator', (req, res) => {
+    res.render('pages/calculator');
+});
+
 // SAVE
 router.post('/save', calculationController.saveCalculation);
 
