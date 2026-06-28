@@ -730,26 +730,146 @@
 }
 
 /* Responsive */
+@media (max-width: 992px) {
+    .steps-nav {
+        width: 100%;
+    }
+
+    .steps-content {
+        padding: 15px 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .form-grid,
+    .form-row,
     .settings-grid,
     .options-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .steps-nav {
+        width: 100%;
         flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
     }
-    
-    .builder-toolbar {
-        flex-direction: column;
+
+    .step-item {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 140px;
+        padding: 8px 6px;
+        border-radius: 10px;
+        background: #f8fafc;
     }
-    
+
+    .steps-content {
+        padding: 15px;
+    }
+
+    .builder-toolbar,
     .button-group {
         flex-direction: column;
     }
-    
-    .btn, .btn-primary, .btn-secondary, .btn-ai, .btn-bulk, .btn-success {
+
+    .builder-toolbar .btn,
+    .button-group .btn,
+    .btn,
+    .btn-primary,
+    .btn-secondary,
+    .btn-ai,
+    .btn-bulk,
+    .btn-success {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .test-header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-icon {
+        order: 1;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .close-btn {
+        order: 2;
+        align-self: center;
+        margin-left: auto;
+    }
+
+    .steps-nav {
+        order: 3;
+    }
+
+    .question-item-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .question-meta {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .main-content.sidebar-hidden .test-creator-container {
+        padding: 0 12px;
+    }
+
+    .test-creator-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .steps-content {
+        padding: 12px;
+    }
+
+    .steps-nav {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .step-item {
+        flex: 0 0 auto;
+        min-width: 120px;
+        padding: 8px 10px;
+    }
+
+    .step-label {
+        font-size: 13px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+    }
+
+    .question-form,
+    .questions-list {
+        padding: 14px;
+    }
+
+    .section-header {
+        padding: 12px 14px;
+        align-items: flex-start;
+    }
+
+    .question-actions {
+        flex-wrap: wrap;
+    }
+
+    .question-actions button {
         width: 100%;
     }
 }
@@ -995,9 +1115,17 @@
 
 /* --- TABLETS ADJUSTMENTS SCREEN SYSTEM (Under 768px) --- */
 @media (max-width: 768px) {
+    .modal {
+        padding: 12px;
+        align-items: flex-start;
+    }
+
     .modal-content {
         max-width: 500px;
+        width: 100%;
+        max-height: 90vh;
     }
+
     .modal-header, .modal-body, .modal-footer {
         padding-left: 24px;
         padding-right: 24px;
@@ -1006,52 +1134,61 @@
 
 /* --- MOBILE COMPACT DISPLAY SMARTPHONES SYSTEM (Under 480px) --- */
 @media (max-width: 480px) {
-    body {
-        position: fixed; /* Stops body scroll while modal overlays smartphone viewports */
-    }
     .modal {
-        padding: 10px;
+        padding: 8px;
     }
+
     .modal-content {
-        border-radius: 20px;
+        border-radius: 16px;
+        max-height: 95vh;
     }
+
     .modal-header {
-        padding: 16px 20px;
+        padding: 16px 18px;
     }
+
     .modal-header h2 {
         font-size: 18px;
     }
+
     .modal-body {
-        padding: 20px;
-        gap: 20px;
+        padding: 18px;
+        gap: 16px;
     }
+
     /* Input layout structure components collapse downwards vertically on tight grids */
     .link-container {
         flex-direction: column;
         gap: 10px;
     }
+
     .share-link-input {
         width: 100%;
         padding: 10px 16px;
     }
+
     .link-container .btn {
         width: 100%;
         justify-content: center;
     }
+
     /* 3 button columns collapse down safely to 1 standalone listing stream block */
     .share-buttons {
         grid-template-columns: 1fr;
         gap: 8px;
     }
+
     .share-btn {
         padding: 12px;
     }
+
     /* Footer buttons collapse alongside horizontal rows distribution */
     .modal-footer {
-        padding: 16px 20px;
+        padding: 14px 18px;
         flex-direction: column-reverse;
         width: 100%;
     }
+
     .modal-footer .btn {
         width: 100%;
         justify-content: center;

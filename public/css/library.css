@@ -167,6 +167,9 @@ body{
     .tabs{
         overflow:auto;
     }
+    .header-left{
+        gap:120px;
+    }
 }
 @media (max-width: 480px) {
     .top-header {
