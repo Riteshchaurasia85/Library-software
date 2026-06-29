@@ -426,13 +426,11 @@ exports.takeTest = async (req, res) => {
             testId: test._id
         }).sort({ questionNumber: 1 });
 
-        res.render("index", {
-            activePage: "take-test",
-            content: "pages/take-test",
-            pageTitle: test.title,
-            test,
-            questions
-        });
+       res.render("pages/take-test", {
+         pageTitle: test.title,
+         test,
+         questions
+     });
 
     } catch (error) {
         console.error("Failed to load test:", error);

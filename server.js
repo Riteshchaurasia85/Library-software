@@ -48,6 +48,7 @@ const pageData = {
     app.use('/', pagesRoutes);
     app.use('/', studentRoutes);
     app.use("/", birthdayRoutes);
+    app.use('/', testRoutes);
     app.use('/api', apiRoutes);
     app.use('/api', whiteboardRoutes);
     app.use('/tests', testRoutes);

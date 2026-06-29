@@ -116,13 +116,11 @@ exports.takeTestPublic = async (req, res) => {
         const test = await Test.findOne({ publicLink: req.params.publicLink, isPublished: true });
         if (!test) return res.status(404).send('Test not found or not published');
         const questions = await Question.find({ testId: test._id }).sort({ questionNumber: 1 });
-        res.render('index', {
-            activePage: 'take-test',
-            content: 'pages/take-test',
-            pageTitle: test.title,
-            test,
-            questions
-        });
+       res.render("pages/take-test", {
+        pageTitle: test.title,
+        test,
+        questions
+});
     } catch (error) {
         console.error('Failed to load test:', error);
         res.status(404).send('Test not found');

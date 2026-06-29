@@ -151,9 +151,11 @@
     }
 
     .dashboard-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        flex-direction:row;
+        gap:12px;
     }
 
     .dashboard-header h1 {
@@ -161,9 +163,14 @@
     }
 
     .dashboard-actions {
-        width: 100%;
+        /* width: 100%;
         justify-content: flex-start;
-        gap: 8px;
+        gap: 8px; */
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        gap:10px;
+        width:auto;
     }
 
     .btn, .btn-add, .btn-cancel {

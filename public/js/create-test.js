@@ -179,7 +179,7 @@ function updateTestSummary() {
     document.getElementById('summaryPassing').textContent = passingPercentage;
 }
 
-function publishTest(e) {
+ function publishTest(e) {
     // 1. Form submission aur page auto-reload ko lock karna
     if (e) e.preventDefault();
 
@@ -314,12 +314,12 @@ function closeShareModal() {
     document.getElementById('shareableLinkModal').style.display = 'none';
 }
 
-function redirectToTests() {
-    window.location.href = '/dashboard';
-}
 // function redirectToTests() {
-//     window.location.href = '/tests/all';
+//     window.location.href = '/dashboard';
 // }
+function redirectToTests() {
+    window.location.href = '/tests/all';
+}
 
 function closeTestCreator() {
     window.history.back();
