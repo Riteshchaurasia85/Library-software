@@ -175,12 +175,13 @@ exports.deleteQuestion = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
-
+ 
 // Publish test and generate public link
 exports.publishTest = async (req, res) => {
     try {
         const { testId } = req.params;
-        
+        const baseUrl = `${req.protocol}://${req.get("host")}`;
+
         const test = await Test.findById(testId);
         if (!test) return res.status(404).json({ success: false, message: "Test not found" });
         
@@ -194,12 +195,12 @@ exports.publishTest = async (req, res) => {
         test.publicLink = publicLink;
         await test.save();
         
-        res.status(200).json({ 
-            success: true, 
-            message: "Test published successfully", 
-            publicLink: publicLink,
-            shareUrl: `${process.env.APP_URL || 'http://localhost:4000'}/take-test/${publicLink}`
-        });
+        res.status(200).json({
+        success: true,
+        message: "Test published successfully",
+        publicLink,
+        shareUrl: `${baseUrl}/take-test/${publicLink}`
+    });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
